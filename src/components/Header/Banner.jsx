@@ -1,8 +1,22 @@
 import { Link } from "react-router-dom";
 
+import Aos from 'aos';
+import 'aos/dist/aos.css';
+import { useEffect } from "react";
+
 const Banner = () => {
+
+  useEffect(()=>{
+    Aos.init({
+      offset: 200,
+      duration: 600,
+      easing: 'ease-in-sine',
+      delay: 100,
+    });  },[])
+
+
   return (
-    <div className="relative bg-cover bg-center h-[80vh]">
+    <div className="relative bg-cover bg-center h-[80vh]" data-aos="zoom-in-down">
       {/* Background Image */}
       <div
         className="absolute top-0 left-0 w-full h-full bg-cover bg-center"
@@ -18,10 +32,10 @@ const Banner = () => {
       {/* Content */}
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-center text-white z-10">
         <div className="max-w-2xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-extrabold mb-4 transition duration-300 hover:text-red-500">
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-4">
             Welcome to Our Hotel Booking Platform
           </h1>
-          <p className="text-lg mb-6 transition duration-300 hover:text-red-500">
+          <p className="text-lg mb-6">
             Find the Perfect Accommodation for Your Next Getaway
           </p>
           <Link to="/rooms">
