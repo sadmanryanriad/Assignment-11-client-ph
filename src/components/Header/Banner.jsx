@@ -1,19 +1,8 @@
 import { Link } from "react-router-dom";
-
-import Aos from 'aos';
-import 'aos/dist/aos.css';
-import { useEffect } from "react";
+import { useAos } from "../../hooks/useAos";
 
 const Banner = () => {
-
-  useEffect(()=>{
-    Aos.init({
-      offset: 200,
-      duration: 600,
-      easing: 'ease-in-sine',
-      delay: 100,
-    });  },[])
-
+  useAos({ offset: 200, duration: 600, easing: 'ease-in-sine', delay: 100 });
 
   return (
     <div className="relative bg-cover bg-center h-[80vh]" data-aos="zoom-in-down">
