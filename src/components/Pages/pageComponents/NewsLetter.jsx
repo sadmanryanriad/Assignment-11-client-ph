@@ -1,20 +1,30 @@
-
 const NewsLetter = () => {
-    return (
-        
-        <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-gray-50 p-8 sm:p-12">
-          <div className="w-full max-w-4xl rounded-md border-2 border-gray-100 bg-white p-14">
-            <div className="flex flex-col items-center">
-              <span className="-rotate-1 rounded-lg bg-yellow-100 py-px px-2 text-sm text-yellow-800">117+ people joined this week</span>
-              <h3 className="mt-2 max-w-2xl text-center text-2xl font-bold leading-tight sm:text-3xl md:text-4xl md:leading-tight">Want actionable SEO advice from me? Then join this newsletter</h3>
-              <form action="" className="mx-auto mt-4 flex w-full max-w-md flex-col gap-3 sm:flex-row sm:gap-0">
-                <input type="email" name="email" id="email" className="grow rounded border-2 border-gray-300 py-3 px-3 focus:border-emerald-500 focus:outline-none sm:rounded-l-md sm:rounded-r-none sm:border-r-0" placeholder="Email Address" />
-                <button type="submit" className="rounded bg-emerald-500 px-5 py-4 font-bold text-white sm:rounded-l-none sm:rounded-r-md">Get First Email</button>
-              </form>
+  return (
+    <>
+      <section className="dark:text-gray-300">
+        <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
+          <div className="mx-auto max-w-screen-md sm:text-center">
+            <h2 className="mb-4 text-3xl tracking-tight font-extrabold dark:text-gray-300 sm:text-4xl dark:text-white">
+              Sign up for our newsletter
+            </h2>
+            <p className="mx-auto mb-8 max-w-2xl font-light text-gray-500 md:mb-12 sm:text-xl dark:text-gray-400">
+              Stay up to date with the announcements and
+              exclusive discounts feel free to sign up with your email.
+            </p>
+            <div className="join">
+              <input
+                className="input input-bordered join-item p-2"
+                placeholder="Email"
+              />
+              <button className="btn join-item rounded-r-lg bg-green-400 dark: border-none">
+                Subscribe
+              </button>
             </div>
           </div>
         </div>
-    );
+      </section>
+    </>
+  );
 };
 
 export default NewsLetter;
