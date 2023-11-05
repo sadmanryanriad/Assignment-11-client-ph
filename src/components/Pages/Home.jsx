@@ -4,6 +4,7 @@ import UpCar from "./pageComponents/UpCar";
 import Services from "./services/Services";
 import NewsLetter from "./pageComponents/NewsLetter";
 import PromotionSection from "./pageComponents/PromotionSection";
+import GoogleMap from "../googleMap/GoogleMap";
 
 const Home = () => {
   return (
@@ -18,6 +19,7 @@ const Home = () => {
       <div className="w-full md:w-[90%] mx-auto">
         <Services></Services>
         <PromotionSection></PromotionSection>
+        <GoogleMap></GoogleMap>
         <NewsLetter></NewsLetter>
       </div>
     </div>
