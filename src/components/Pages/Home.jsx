@@ -15,7 +15,7 @@ const Home = () => {
         component={<UpCar></UpCar>}
       />
       <Banner></Banner>
-      <div className="w-[90%] mx-auto">
+      <div className="w-full md:w-[90%] mx-auto">
         <Services></Services>
         <PromotionSection></PromotionSection>
         <NewsLetter></NewsLetter>
