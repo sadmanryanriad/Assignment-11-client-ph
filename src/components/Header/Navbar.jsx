@@ -1,5 +1,4 @@
 import { Link, NavLink } from "react-router-dom";
-import { FaHotel } from "react-icons/fa";
 import { FiLogIn } from "react-icons/fi";
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
