@@ -74,7 +74,7 @@ const Navbar = () => {
           <div className="flex gap-2 items-center font-semibold pl-3 uppercase">
             Alpha Hotel
             <span>
-              <FaHotel></FaHotel>
+              <img src="/src/assets/hotel-logo.png" className="w-18 md:w-10" alt="hotel logo" />
             </span>
           </div>
         </Link>
