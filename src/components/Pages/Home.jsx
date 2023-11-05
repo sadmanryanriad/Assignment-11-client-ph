@@ -1,6 +1,7 @@
 import Banner from "../Header/Banner";
 import ScrollToTop from "react-scroll-to-top";
 import UpCar from "./pageComponents/UpCar";
+import Services from "./services/Services";
 
 const Home = () => {
   return (
@@ -13,6 +14,7 @@ const Home = () => {
       />
       <Banner></Banner>
       <div className="w-[90%] mx-auto">
+        <Services></Services>
       </div>
     </div>
   );
