@@ -6,6 +6,7 @@ import Login from "../components/Pages/Login";
 import ErrorPage from "../components/Pages/ErrorPage";
 import MyBookings from "../components/Pages/MyBookings";
 import Rooms from "../components/Pages/Rooms";
+import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -27,7 +28,7 @@ const router = createBrowserRouter([
       },
       {
         path: "my-bookings",
-        element: <MyBookings></MyBookings>,
+        element: <PrivateRoute><MyBookings></MyBookings></PrivateRoute>,
       },
       {
         path: "rooms",
