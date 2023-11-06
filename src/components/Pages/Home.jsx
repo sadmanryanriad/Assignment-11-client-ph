@@ -1,16 +1,17 @@
 import Banner from "../Header/Banner";
-import ScrollToTop from "react-scroll-to-top";
 import Services from "./services/Services";
 import NewsLetter from "./pageComponents/NewsLetter";
 import PromotionSection from "./pageComponents/PromotionSection";
 import AddressSection from "../Address/AddressSection";
 import FeaturedRooms from "../featured/FeaturedRooms";
 import UserTestimonials from "./testimonial/UserTestimonials";
+import useScrollToTop from "../../hooks/useScrollToTop";
+import { BsArrowUpCircle } from "react-icons/bs";
 
 const Home = () => {
+  const { isScrollVisible, scrollToTop } = useScrollToTop(200);
   return (
     <div className="overflow-hidden">
-<ScrollToTop smooth width="40" height="40"/>
       <Banner></Banner>
       <div className="w-full md:w-[90%] mx-auto">
         <Services></Services>
@@ -19,6 +20,16 @@ const Home = () => {
         <UserTestimonials></UserTestimonials>
         <AddressSection></AddressSection>
         <NewsLetter></NewsLetter>
+
+        {/* Render the scroll-to-top button when showScrollButton is true */}
+        {isScrollVisible && (
+          <button
+            className="fixed bottom-10 right-10 border bg-black dark:text-black text-white dark:bg-white text-3xl md:text-4xl rounded-full cursor-pointer"
+            onClick={scrollToTop}
+          >
+            <BsArrowUpCircle></BsArrowUpCircle>
+          </button>
+        )}
       </div>
     </div>
   );
