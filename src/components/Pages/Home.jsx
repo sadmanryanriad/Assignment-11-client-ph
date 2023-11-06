@@ -24,7 +24,8 @@ const Home = () => {
         {/* Render the scroll-to-top button when showScrollButton is true */}
         {isScrollVisible && (
           <button
-            className="fixed bottom-10 right-10 border bg-black dark:text-black text-white dark:bg-white text-3xl md:text-4xl rounded-full cursor-pointer"
+            className="z-10 fixed bottom-10 right-10 border bg-black dark:text-black text-white dark:bg-white 
+            text-4xl md:text-5xl rounded-full cursor-pointer"
             onClick={scrollToTop}
           >
             <BsArrowUpCircle></BsArrowUpCircle>
