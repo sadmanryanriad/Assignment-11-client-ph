@@ -6,7 +6,7 @@ const RoomCard = ({ room }) => {
   return (
     <>
       <div className="card flex flex-col md:flex-row bg-base-100 shadow-xl">
-        <img className="w-96 flex-1 rounded-lg" src={imageURL} alt="Album" />
+        <img className="w-full md:w-96 flex-1 rounded-lg" src={imageURL} alt="Album" />
         <div className="card-body flex-1">
           <h2 className="card-title">Room No {roomNo}</h2>
           <p>{roomDescription}</p>

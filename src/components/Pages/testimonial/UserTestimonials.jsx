@@ -88,7 +88,7 @@ const UserTestimonials = () => {
             </button>
           ) : (
             <button
-              className="mx-auto btn bg-green-400 border-none px-8 py-3 rounded-full hover:bg-gray-800 hover:text-gray-200 hover:scale-105 transform transition duration-300"
+              className="mt-3 btn bg-green-400 border-none px-8 py-3 rounded-full hover:bg-gray-600 hover:text-gray-200 hover:scale-105 transform transition duration-300"
               onClick={() => setExpanded(true)}
             >
               See More

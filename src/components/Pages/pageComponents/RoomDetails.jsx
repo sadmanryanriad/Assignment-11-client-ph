@@ -74,7 +74,7 @@ const RoomDetails = () => {
           </ul>
         </div>
         <Link >
-            <button className="btn mt-5 bg-green-400 hover:bg-slate-800 hover:text-gray-200">
+            <button className="mt-5 btn bg-green-400 border-none px-8 py-3 rounded-full hover:bg-gray-600 hover:text-gray-200 hover:scale-105 transform transition duration-300">
               Book Now
             </button></Link>
       </div>

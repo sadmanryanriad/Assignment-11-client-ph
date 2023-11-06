@@ -1,7 +1,10 @@
+import Lottie from "lottie-react";
+import loading from "../../assets/loading.json";
+
 const Spinner = () => {
   return (
-    <div className="w-full text-center mt-12">
-      <span className="loading loading-spinner loading-lg text-success text-5xl "></span>
+    <div className="max-w-sm mx-auto text-center mt-12">
+            <Lottie animationData={loading} loop={true} />
     </div>
   );
 };
