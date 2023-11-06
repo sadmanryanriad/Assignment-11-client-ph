@@ -1,22 +1,30 @@
-import { Link } from "react-router-dom";
+import { useEffect } from "react";
+import { useState } from "react";
+import { Link, useParams } from "react-router-dom";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Spinner from "../../Spinner/Spinner";
 
-const details = () => {
-    const details =     {
-        roomNo: "104",
-        roomDescription: "Standard Room with Garden View",
-        pricePerNight: "$110",
-        roomSize: "330 sq. ft.",
-        availability: "Available",
-        imageURL: "https://i.ibb.co/3Fc9sts/bed-3.jpg",
-        specialOffer: "No offer",
-        rating: 3.7,
-        features: [
-            "King-size bed",
-            "Garden view",
-            "Air conditioning",
-            "Free Wi-Fi",
-          ],
-      }
+const RoomDetails = () => {
+
+  const [details, setDetails] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+  const axiosSecure = useAxiosSecure();
+
+  const {id} = useParams();
+      
+      const url = `/rooms/${id}`;
+       
+      useEffect(()=>{
+        axiosSecure.get(url)
+        .then(res=>{
+          setDetails(res?.data);
+          setIsLoading(false);
+        })
+
+      },[axiosSecure, url])
+      
+      if(isLoading) return <Spinner></Spinner>
+
   return (
     <div className="bg-white">
       <div className="max-w-7xl mx-auto px-4 py-8">
@@ -74,4 +82,4 @@ const details = () => {
   );
 };
 
-export default details;
+export default RoomDetails;

@@ -14,7 +14,6 @@ const Rooms = () => {
       useEffect(()=>{
         axiosSecure.get(url)
         .then(res=>{
-          console.log(res.data);
           setRooms(res?.data);
           setIsLoading(false);
         })
