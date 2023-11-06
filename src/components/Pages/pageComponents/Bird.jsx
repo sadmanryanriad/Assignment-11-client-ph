@@ -1,7 +1,7 @@
 import Lottie from "lottie-react";
 import bird from "../../../assets/bird.json";
 
-const BirdWithLetter = () => {
+const Bird = () => {
     return (
         <div className="w-full ">
             <Lottie animationData={bird} loop={true} />
@@ -9,4 +9,4 @@ const BirdWithLetter = () => {
     );
 };
 
-export default BirdWithLetter;
+export default Bird;

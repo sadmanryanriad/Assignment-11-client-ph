@@ -33,7 +33,7 @@ const imagesReverse = [
 
 const PromotionSection = () => {
   return (
-    <section className="mt-20 md:mt-32 dark:text-gray-300">
+    <section className="mt-20 md:mt-20 dark:text-gray-300">
       {/* text left and image right */}
       <div className="flex flex-col md:flex-row w-full max-w-7xl mx-auto items-center">
         <div className="flex-1 px-3">

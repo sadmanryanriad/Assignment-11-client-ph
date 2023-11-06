@@ -17,9 +17,9 @@ const GoogleMap = () => {
   };
 
   return (
-    <div className="mt-12 w-full mx-auto">
+    <div className="w-full">
       {/* // Important! Always set the container height explicitly */}
-      <div style={{ height: "600px", width: "80%",margin: "auto" }}>
+      <div style={{ height: "600px", width: "100%",margin: "auto" }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: import.meta.env.VITE_GOOGLE_API }}
           defaultCenter={defaultProps.center}

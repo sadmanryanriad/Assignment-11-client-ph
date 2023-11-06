@@ -1,4 +1,4 @@
-import BirdWithLetter from "./BirdWithLetter";
+import Bird from "./Bird";
 
 const NewsLetter = () => {
   return (
@@ -29,7 +29,7 @@ const NewsLetter = () => {
         </div>
         {/* animation side */}
         <div className="flex-1">
-          <BirdWithLetter></BirdWithLetter>
+          <Bird></Bird>
         </div>
       </div>
     </>
