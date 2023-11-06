@@ -58,9 +58,11 @@ const Banner = () => {
           </Link>
         </div>
       </div>
-      <button className="fixed md:hidden bottom-10 left-1/2 transform -translate-x-1/2 btn bg-green-400 border-none px-8 py-3 rounded-full hover:bg-gray-800 hover:text-gray-200 hover:scale-105 transition duration-300">
-        Explore Rooms
-      </button>
+      <Link to={"/rooms"}>
+        <button className="fixed md:hidden bottom-10 left-1/2 transform -translate-x-1/2 btn bg-green-400 border-none px-8 py-3 rounded-full hover:bg-gray-800 hover:text-gray-200 hover:scale-105 transition duration-300">
+          Explore Rooms
+        </button>
+      </Link>
     </div>
   );
 };
