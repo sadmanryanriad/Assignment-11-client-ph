@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
 const RoomCard = ({ room }) => {
-  const { id, roomNo, roomDescription, pricePerNight, imageURL, rating } = room;
+  const { _id, roomNo, roomDescription, pricePerNight, imageURL, rating } = room;
   return (
     <>
       <div className="card flex flex-col md:flex-row bg-base-100 shadow-xl">
@@ -13,7 +13,7 @@ const RoomCard = ({ room }) => {
           <p className="text-yellow-500 font-semibold">Rating: {rating}</p>
           <p className="font-semibold">Price: ${pricePerNight}</p>
           <div className="card-actions justify-end">
-            <Link to={`/rooms/${id}`}>
+            <Link to={`/rooms/${_id}`}>
             <button className="btn btn-sm bg-green-400 hover:bg-slate-800 hover:text-gray-200">
               See Details
             </button></Link>
@@ -25,7 +25,7 @@ const RoomCard = ({ room }) => {
 };
 
 RoomCard.propTypes = {
-  room: PropTypes.node,
+  room: PropTypes.object,
 };
 
 export default RoomCard;
