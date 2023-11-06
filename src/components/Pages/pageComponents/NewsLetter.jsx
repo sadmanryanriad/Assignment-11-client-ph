@@ -1,6 +1,11 @@
+import toast from "react-hot-toast";
 import Bird from "./Bird";
 
 const NewsLetter = () => {
+  const handleNewsLetter = e =>{
+    e.preventDefault();
+    toast.success("You will get notified!");
+  }
   return (
     <>
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center  mt-10 md:mt-20">
@@ -15,15 +20,18 @@ const NewsLetter = () => {
                 Stay up to date with the announcements and exclusive discounts
                 feel free to sign up with your email.
               </p>
-              <div className="join">
+              <form onSubmit={handleNewsLetter} className="join">
                 <input
                   className="input input-bordered join-item p-2"
                   placeholder="Email"
+                  type="email"
+                  name="email"
+                  required
                 />
-                <button className="btn join-item rounded-r-lg bg-green-400 dark: border-none">
+                <button type="submit" className="btn join-item rounded-r-lg bg-green-400 dark: border-none">
                   Subscribe
                 </button>
-              </div>
+              </form>
             </div>
           </div>
         </div>
