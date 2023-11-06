@@ -14,7 +14,7 @@ const AddressSection = () => {
               <p>Postal Code: 12345</p>
             </address>
           </div>
-            <div className="flex-1  mx-auto">
+            <div className="flex-1 mx-auto">
                 <LocationOnMap></LocationOnMap>
           </div>
         </div>

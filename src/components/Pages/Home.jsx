@@ -9,7 +9,7 @@ import FeaturedRooms from "../featured/FeaturedRooms";
 
 const Home = () => {
   return (
-    <div className="">
+    <div className="overflow-hidden">
       <ScrollToTop
         // Classname to add/override styling (note, !important for overrides might be needed)
         smooth
