@@ -36,7 +36,7 @@ const TestimonialCard = ({ image, name, rating, content }) => {
           </div>
   
           <p className="mt-4 ">
-            {content}
+            {content.length>160 ? (content.slice(0,160) ) : content}
           </p>
         </blockquote>
       </div>
