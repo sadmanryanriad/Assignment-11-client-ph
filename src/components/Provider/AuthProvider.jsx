@@ -10,6 +10,7 @@ import {
 } from "firebase/auth";
 import PropTypes from "prop-types";
 import { auth } from "../../firebase/firebase.config";
+import toast from "react-hot-toast";
 
 export const AuthContext = createContext(null);
 
@@ -31,14 +32,24 @@ const AuthProvider = ({ children }) => {
     updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: image,
-    });
+    })
+      .then(() => {
+        console.log("profile updated");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+    // updateProfile(auth.currentUser, {
+    //   displayName: name,
+    //   photoURL: image,
+    // });
   };
   const login = (email, password) => {
     setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
   const logout = () => {
-    alert("Log out successful");
+    toast.success("Log out successful");
     return signOut(auth);
   };
 
@@ -56,6 +67,7 @@ const AuthProvider = ({ children }) => {
     const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
       setLoading(false);
+      // console.log(currentUser.photoURL);
     });
 
     return () => unSubscribe();

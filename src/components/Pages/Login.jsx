@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import SocialLogin from "./SocialLogin";
+import toast from "react-hot-toast";
 
 const Login = () => {
   const navigate = useNavigate("/");
@@ -14,7 +15,7 @@ const Login = () => {
     if (
       !/^(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}[\]:;<>,.?/~\\-]).{6,}$/.test(password)
     ) {
-      alert(
+      toast.error(
         "Password must have 6 character, a capital and a special character."
       );
       return;
@@ -22,12 +23,12 @@ const Login = () => {
 
     login(email, password)
       .then(() => {
-        alert("log in successful");
+        toast.success("log in successful");
         navigate("/");
         window.location.reload();
       })
       .catch((error) => {
-        alert(error.message);
+        toast.error(error.message);
       });
   };
 

@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import { BsCursorText, BsImageFill } from "react-icons/bs";
+import toast from "react-hot-toast";
 
 const Registration = () => {
   const { createUser, handleUpdateProfile } = useContext(AuthContext);
@@ -16,20 +17,20 @@ const Registration = () => {
     if (
       !/^(?=.*[A-Z])(?=.*[!@#$%^&*()_+{}[\]:;<>,.?/~\\-]).{6,}$/.test(password)
     ) {
-      alert(
+      toast.success(
         "Password must have 6 character, a capital and a special character."
       );
       return;
     }
     createUser(email, password)
-      .then(() => {
-        handleUpdateProfile(name, image);
-        alert("user created successfully!");
+      .then(async () => {
+        await handleUpdateProfile(name, image);
+        toast.success("user created successfully!");
         navigate("/");
         window.location.reload();
       })
       .catch((error) => {
-        alert(error);
+        toast.error(error);
         console.log(error.message);
       });
   };

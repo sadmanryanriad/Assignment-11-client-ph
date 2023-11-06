@@ -6,6 +6,7 @@ import NewsLetter from "./pageComponents/NewsLetter";
 import PromotionSection from "./pageComponents/PromotionSection";
 import AddressSection from "../Address/AddressSection";
 import FeaturedRooms from "../featured/FeaturedRooms";
+import UserTestimonials from "./testimonial/UserTestimonials";
 
 const Home = () => {
   return (
@@ -21,8 +22,8 @@ const Home = () => {
         <Services></Services>
         <FeaturedRooms></FeaturedRooms>
         <PromotionSection></PromotionSection>
+        <UserTestimonials></UserTestimonials>
         <AddressSection></AddressSection>
-        {/* <GoogleMap></GoogleMap> */}
         <NewsLetter></NewsLetter>
       </div>
     </div>

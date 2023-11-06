@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
+import toast from "react-hot-toast";
 
 const SocialLogin = () => {
   const { googleLogin } = useContext(AuthContext);
@@ -11,12 +12,12 @@ const SocialLogin = () => {
   const handleButton = () => {
     googleLogin()
       .then(() => {
-        alert("logged in successfully");
+        toast.success("logged in successfully");
         navigate("/");
         window.location.reload();
       })
       .catch((error) => {
-        alert(error.message);
+        toast.error(error.message);
         console.log(error.message);
       });
   };
