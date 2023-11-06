@@ -66,7 +66,7 @@ const UserTestimonials = () => {
           User Testimonials
         </h2>
 
-        <div className="mt-8 grid grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="mt-8 grid grid-cols-1 p-2 md:grid-cols-3 gap-6">
           {displayedTestimonials.map((testimonial) => (
             <TestimonialCard
               key={testimonial.id}
@@ -88,7 +88,7 @@ const UserTestimonials = () => {
             </button>
           ) : (
             <button
-              className="hidden md:block mx-auto btn bg-green-400 border-none px-8 py-3 rounded-full hover:bg-gray-800 hover:text-gray-200 hover:scale-105 transform transition duration-300"
+              className="mx-auto btn bg-green-400 border-none px-8 py-3 rounded-full hover:bg-gray-800 hover:text-gray-200 hover:scale-105 transform transition duration-300"
               onClick={() => setExpanded(true)}
             >
               See More
