@@ -27,6 +27,9 @@ const RoomDetails = () => {
     axiosSecure.get(url).then((res) => {
       setDetails(res?.data);
     });
+    axiosSecure.get(`/myBookings/${user.email}`).then((res) => {
+      setBookings(res?.data);
+    });
   };
 
   useEffect(() => {
