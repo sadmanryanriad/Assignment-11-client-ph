@@ -1,20 +1,21 @@
 import { useContext, useEffect } from "react";
 import { useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Spinner from "../../Spinner/Spinner";
 import { AuthContext } from "../../Provider/AuthProvider";
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import BookingModal from "./BookingModal";
+import toast from "react-hot-toast";
 
 const RoomDetails = () => {
 
   const [details, setDetails] = useState({});
   const [isLoading, setIsLoading] = useState(true);
+  const [isModalOpen,setIsModalOpen] = useState(false);
   const axiosSecure = useAxiosSecure();
   const {user} = useContext(AuthContext);
   const [selectedDate, setSelectedDate] = useState(new Date());
-  console.log(user.email)
 
   const {id} = useParams();
       
@@ -35,13 +36,22 @@ const RoomDetails = () => {
       const handleDateChange = (date) => {
         setSelectedDate(date);
       };
+
+      const openModal = () =>{
+        setIsModalOpen(true);
+      }
+      const closeModal = () =>{
+        setIsModalOpen(false);
+      }
     
       const handleBooking = () => {
+        if(!selectedDate) return toast.error("Please select a date!");
         const bookingDetails = {
           userEmail: user.email,
           selectedDate: selectedDate, // Include the selected date in bookingDetails
         };
         console.log(bookingDetails);
+        closeModal();
       };
   return (
 <>
@@ -92,36 +102,16 @@ const RoomDetails = () => {
             ))}
           </ul>
         </div>
-        <Link >
-            <button onClick={()=>document.getElementById('my_modal_5').showModal()} className="mt-5 btn bg-green-400 border-none px-8 py-3 rounded-full hover:bg-gray-600 hover:text-gray-200 hover:scale-105 transform transition duration-300">
+            <button onClick={openModal} className="mt-5 btn bg-green-400 border-none px-8 py-3 rounded-full hover:bg-gray-600 hover:text-gray-200 hover:scale-105 transform transition duration-300">
               Book Now
-            </button></Link>
+            </button>
       </div>
     </div>
 
-    {/* Open the modal using document.getElementById('ID').showModal() method */}
-<dialog id="my_modal_5" className="modal modal-bottom sm:modal-middle">
-  <div className="modal-box">
-    <h3 className="font-bold text-lg">Total price: {details?.pricePerNight}</h3>
-    <p className="py-4">{details?.roomDescription}</p>
-    {/* add a datepicker here */}
-    <div className="min-w-max">
-    <form method="dialog" className="flex gap-10">
-              <DatePicker
-                selected={selectedDate}
-                onChange={handleDateChange}
-                dateFormat="MM/dd/yyyy" // Customize the date format as needed
-                isClearable
-                showYearDropdown
-              />
-              <button onClick={handleBooking} className="btn bg-green-400">
-                Book
-              </button>
-              <button className="btn btn-error" onClick={() => document.getElementById('my_modal_5').close()}>Cancel</button>
-            </form>
-    </div>
-  </div>
-</dialog>
+{
+  isModalOpen && <BookingModal handleBooking={handleBooking} closeModal={closeModal} handleDateChange={handleDateChange} selectedDate={selectedDate}></BookingModal>
+}
+    
 </>
   );
 };
