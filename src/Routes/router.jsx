@@ -4,10 +4,10 @@ import Home from "../components/Pages/Home";
 import Registration from "../components/Pages/Registration";
 import Login from "../components/Pages/Login";
 import ErrorPage from "../components/Pages/ErrorPage";
-import MyBookings from "../components/Pages/MyBookings";
 import Rooms from "../components/Pages/Rooms";
 import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 import RoomDetails from "../components/Pages/pageComponents/RoomDetails";
+import MyBookings from "../components/Pages/MyBookings/MyBookings";
 
 const router = createBrowserRouter([
   {
