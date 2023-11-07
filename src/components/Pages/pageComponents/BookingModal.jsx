@@ -2,28 +2,34 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import "react-datepicker/dist/react-datepicker-cssmodules.css";
 import PropTypes from "prop-types";
+import { useContext } from "react";
+import { AuthContext } from "../../Provider/AuthProvider";
 
 const BookingModal = ({
   handleBooking,
   closeModal,
   handleDateChange,
   selectedDate,
+  roomDetails
 }) => {
+
+  const {user} = useContext(AuthContext);
+
   return (
     <>
       <div className="min-w-screen h-screen animated fadeIn faster fixed left-0 top-0 flex justify-center items-center inset-0 z-50 outline-none focus:outline-none bg-no-repeat bg-center bg-cover">
         <div className="absolute bg-black opacity-80 inset-0 z-0"></div>
         <div className="w-full max-w-lg p-5 relative mx-auto my-auto rounded-xl shadow-lg bg-white">
           <div className="text-center">
-            <h2 className="text-xl font-bold mb-8">Price: $200</h2>
+            <h2 className="text-xl font-bold mb-8">Price: ${roomDetails?.pricePerNight}</h2>
             <p className="text-lg mb-2">
-              <span className="font-bold">Room Number:</span> 403
+              <span className="font-bold">Room Number:</span> {roomDetails?.roomNo}
             </p>
             <p className="text-lg mb-2">
-              <span className="font-bold">Room:</span> Deluxe Luxury Room
+              <span className="font-bold">Room:</span> {roomDetails?.roomDescription}
             </p>
             <p className="text-lg">
-              <span className="font-bold">Email:</span> sadmanryanriad@gmail.com
+              <span className="font-bold">Email:</span> {user?.email}
             </p>
             {/* Style the date picker */}
             <div className="mt-4">
@@ -64,6 +70,7 @@ BookingModal.propTypes = {
   handleBooking: PropTypes.func.isRequired,
   closeModal: PropTypes.func.isRequired,
   handleDateChange: PropTypes.func.isRequired,
+  roomDetails: PropTypes.object.isRequired,
   selectedDate: PropTypes.instanceOf(Date).isRequired,
 };
 

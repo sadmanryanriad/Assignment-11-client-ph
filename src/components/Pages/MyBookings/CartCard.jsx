@@ -29,6 +29,14 @@ const CartCard = ({ card, handleDelete }) => {
     });
   }, [axiosSecure, url]);
 
+  const handleRating = (roomIdToRate)=>{
+    console.log(roomIdToRate);
+
+    const ratingInfo = {
+        
+    }
+  }
+
   return (
     <div>
       <div className="border p-4 m-4 md:m-0 rounded-lg text-center">
@@ -60,6 +68,7 @@ const CartCard = ({ card, handleDelete }) => {
               Update
             </button>
             <button
+            onClick={()=> handleRating(roomId)}
               className="btn btn-sm btn-warning hover:scale-105"
             >
               Give Rating
