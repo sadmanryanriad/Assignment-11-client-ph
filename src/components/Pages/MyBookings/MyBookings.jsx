@@ -2,14 +2,21 @@ import { useContext, useEffect, useState } from "react";
 import CartCard from "./CartCard";
 import { AuthContext } from "../../Provider/AuthProvider";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import Swal from "sweetalert2";
 
 const MyBookings = () => {
   const { user } = useContext(AuthContext);
-  const [bookings, setBookings] = useState([]); 
+  const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
   const axiosSecure = useAxiosSecure();
 
   const url = `/myBookings/${user?.email}`;
+
+  const reFetchData = () => {
+    axiosSecure.get(url).then((res) => {
+      setBookings(res?.data);
+    });
+  };
 
   useEffect(() => {
     axiosSecure.get(url).then((res) => {
@@ -19,7 +26,26 @@ const MyBookings = () => {
   }, [axiosSecure, url]);
 
   const handleDelete = (userProductId) => {
-    console.log(userProductId);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire({
+          title: "Cancelled!",
+          text: "Booking has been cancelled!",
+          icon: "success",
+        });
+        axiosSecure.delete(`/myBookings/${userProductId}`).then(() => {
+          reFetchData();
+        });
+      }
+    });
   };
 
   return (
