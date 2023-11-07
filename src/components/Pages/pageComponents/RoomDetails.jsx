@@ -136,7 +136,7 @@ const RoomDetails = () => {
           >
             Book Now
           </button>
-          <UserTestimonialsRoom></UserTestimonialsRoom>
+          <UserTestimonialsRoom roomId={id}></UserTestimonialsRoom>
         </div>
       </div>
 

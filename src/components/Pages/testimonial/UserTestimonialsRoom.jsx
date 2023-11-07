@@ -1,35 +1,27 @@
+import PropTypes from "prop-types";
 import { useState } from "react";
 import TestimonialCard from "../testimonial/TestimonialCard";
+import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { useEffect } from "react";
 
-const UserTestimonialsRoom = () => {
+const UserTestimonialsRoom = ({ roomId }) => {
   const [expanded, setExpanded] = useState(false);
 
-  const testimonials = [
-    {
-      id: 1,
-      image: "https://i.ibb.co/wybYrpD/event.png",
-      name: "Paul Starr",
-      rating: 5,
-      content: "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Culpa sit rerum incidunt...",
-    },
-    {
-      id: 2,
-      image: "https://i.ibb.co/wybYrpD/event.png",
-      name: "Jane Doe",
-      rating: 4,
-      content: "Saepe illo est quia obcaecati neque quibusdam eius accusamus error officiis atque voluptates magnam! ",
-    },
-    // Add more initial testimonials here
-    {
-      id: 3,
-      image: "https://i.ibb.co/image3.png",
-      name: "John Smith",
-      rating: 5,
-      content: "The best hotel I've ever stayed in. The staff is friendly, and the rooms are clean and comfortable. Highly recommended!",
-    },
-  ];
+  const [ratings, setRatings] = useState([]);
+  const axiosSecure = useAxiosSecure();
 
-  const displayedTestimonials = expanded ? testimonials : testimonials.slice(0, 3);
+  const url = `/ratings/${roomId}`;
+  useEffect(() => {
+    axiosSecure.get(url).then((res) => {
+      setRatings(res.data);
+    });
+  }, [axiosSecure, url]);
+
+  //how many ratings to show
+  const displayRatings = expanded ? ratings : ratings.slice(0, 3);
+
+  // Check if there are 3 or fewer ratings
+  const shouldShowSeeMoreButton = ratings.length > 3;
 
   return (
     <section className="">
@@ -39,37 +31,34 @@ const UserTestimonialsRoom = () => {
         </h2>
 
         <div className="mt-8 grid grid-cols-1 p-2 md:grid-cols-3 gap-6">
-          {displayedTestimonials.map((testimonial) => (
+          {displayRatings.map((testimonial) => (
             <TestimonialCard
-              key={testimonial.id}
-              image={testimonial.image}
-              name={testimonial.name}
-              rating={testimonial.rating}
-              content={testimonial.content}
+              key={testimonial?._id}
+              image={testimonial?.photoURL}
+              name={testimonial?.displayName}
+              rating={parseInt(testimonial?.rating)}
+              content={testimonial?.message}
             />
           ))}
         </div>
 
         <div className="text-center mt-6">
-          {expanded ? (
+          {shouldShowSeeMoreButton && (
             <button
-              className="btn bg-green-500 text-white hover:bg-gray-600"
-              onClick={() => setExpanded(false)}
+              className="btn bg-green-400 border-none px-8 py-3 rounded-full hover:bg-gray-600 hover:text-gray-200 hover:scale-105 transform transition duration-300"
+              onClick={() => setExpanded(!expanded)}
             >
-              See Less
-            </button>
-          ) : (
-            <button
-              className="mt-3 btn bg-green-400 border-none px-8 py-3 rounded-full hover:bg-gray-600 hover:text-gray-200 hover:scale-105 transform transition duration-300"
-              onClick={() => setExpanded(true)}
-            >
-              See More
+              {expanded ? "See Less" : "See More"}
             </button>
           )}
         </div>
       </div>
     </section>
   );
+};
+
+UserTestimonialsRoom.propTypes = {
+  roomId: PropTypes.string,
 };
 
 export default UserTestimonialsRoom;

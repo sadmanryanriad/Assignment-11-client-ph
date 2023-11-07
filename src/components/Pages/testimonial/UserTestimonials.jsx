@@ -10,16 +10,17 @@ const UserTestimonials = () => {
   const axiosSecure = useAxiosSecure();
 
   const url = `/ratings`;
-  useEffect(()=>{
-    axiosSecure.get(url)
-    .then(res=>{
+  useEffect(() => {
+    axiosSecure.get(url).then((res) => {
       setRatings(res.data);
-    })
-  },[axiosSecure, url])
-
+    });
+  }, [axiosSecure, url]);
 
   //how many ratings to show
   const displayRatings = expanded ? ratings : ratings.slice(0, 3);
+
+  // Check if there are 3 or fewer ratings
+  const shouldShowSeeMoreButton = ratings.length > 3;
 
   return (
     <section className="">
@@ -41,19 +42,12 @@ const UserTestimonials = () => {
         </div>
 
         <div className="text-center mt-6">
-          {expanded ? (
+          {shouldShowSeeMoreButton && (
             <button
-              className=" btn bg-green-400 border-none px-8 py-3 rounded-full hover:bg-gray-600 hover:text-gray-200 hover:scale-105 transform transition duration-300"
-              onClick={() => setExpanded(false)}
+              className="btn bg-green-400 border-none px-8 py-3 rounded-full hover:bg-gray-600 hover:text-gray-200 hover:scale-105 transform transition duration-300"
+              onClick={() => setExpanded(!expanded)}
             >
-              See Less
-            </button>
-          ) : (
-            <button
-              className="mt-3 btn bg-green-400 border-none px-8 py-3 rounded-full hover:bg-gray-600 hover:text-gray-200 hover:scale-105 transform transition duration-300"
-              onClick={() => setExpanded(true)}
-            >
-              See More
+              {expanded ? "See Less" : "See More"}
             </button>
           )}
         </div>
