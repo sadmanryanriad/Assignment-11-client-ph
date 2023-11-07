@@ -71,7 +71,7 @@ const MyBookings = () => {
             ) : (
               <p className="text-5xl">
                 No data found.{" "}
-                <span className="text-red-500">Add product to show!</span>
+                <span className="text-red-500">Book Rooms to show!</span>
               </p>
             )}
           </div>
