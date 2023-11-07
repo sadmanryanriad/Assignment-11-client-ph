@@ -13,6 +13,7 @@ const RoomDetails = () => {
   const [details, setDetails] = useState({});
   const [isLoading, setIsLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [bookings, setBookings] = useState([]);
   const axiosSecure = useAxiosSecure();
   const { user } = useContext(AuthContext);
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -22,7 +23,7 @@ const RoomDetails = () => {
   const url = `/rooms/${id}`;
 
   //for refetching data when user books a room
-  const fetchRooms = () => {
+  const reFetchRooms = () => {
     axiosSecure.get(url).then((res) => {
       setDetails(res?.data);
     });
@@ -33,7 +34,13 @@ const RoomDetails = () => {
       setDetails(res?.data);
       setIsLoading(false);
     });
-  }, [axiosSecure, url]);
+    axiosSecure.get(`/myBookings/${user.email}`).then((res) => {
+      setBookings(res?.data);
+    });
+  }, [axiosSecure, url, user.email]);
+
+  //already booked by user? starts here
+  const isBooked = bookings.find((element) => element.roomId === id);
 
   if (isLoading) return <Spinner></Spinner>;
 
@@ -58,16 +65,17 @@ const RoomDetails = () => {
 
     axiosSecure.post("/bookings", bookingDetails).then((res) => {
       console.log("axios: ", res.data);
-      fetchRooms();
       if (res.data.acknowledged)
         Swal.fire({
           title: "Congratulations",
           text: "Room Booked!",
           icon: "success",
         });
+      reFetchRooms();
     });
     closeModal();
   };
+
   return (
     <>
       <div className="bg-white">
@@ -117,7 +125,9 @@ const RoomDetails = () => {
           </div>
           <button
             onClick={openModal}
-            disabled={!details?.availability || details.availability === 0}
+            disabled={
+              !details?.availability || details.availability === 0 || isBooked
+            }
             className="mt-5 btn bg-green-400 border-none px-8 py-3 rounded-full hover:bg-gray-600 hover:text-gray-200 hover:scale-105 transform transition duration-300"
           >
             Book Now
