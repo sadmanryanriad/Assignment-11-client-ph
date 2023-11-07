@@ -5,9 +5,9 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
 const CartCard = ({ card, handleDelete }) => {
   const { roomId, _id, date } = card;
-  console.log(roomId, _id, date);
+//   console.log(roomId, _id, date);
 
-  const dateStringFromDatabase = '2023-11-08T15:09:51.000Z';
+  const dateStringFromDatabase = date;
   const dateObject = new Date(dateStringFromDatabase);
   
   // Get the day, month, and year from the date object
@@ -25,7 +25,7 @@ const CartCard = ({ card, handleDelete }) => {
   useEffect(() => {
     axiosSecure.get(url).then((res) => {
       setProduct(res?.data);
-      console.log(res.data);
+    //   console.log(res.data);
     });
   }, [axiosSecure, url]);
 
