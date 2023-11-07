@@ -25,6 +25,7 @@ const BookingModal = ({handleBooking,closeModal,handleDateChange,selectedDate}) 
                 isClearable
                 showYearDropdown
                 placeholderText="Select a Date"
+                minDate={new Date()}
                 className="w-full border border-gray-300 rounded p-2 text-base text-gray-700"
               />
             </div>
