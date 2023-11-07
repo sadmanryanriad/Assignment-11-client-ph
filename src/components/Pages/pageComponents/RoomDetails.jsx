@@ -81,7 +81,7 @@ const RoomDetails = () => {
 
   return (
     <>
-      <div className="bg-white">
+      <div className="">
         <div className="max-w-7xl mx-auto px-4 py-8">
           <h1 className="text-3xl font-semibold">Room No {details?.roomNo}</h1>
           <img
