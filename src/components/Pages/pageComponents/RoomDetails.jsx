@@ -82,8 +82,8 @@ const RoomDetails = () => {
             </div>
             <div className="flex items-center gap-2">
               <strong className="text-lg">Availability:</strong>
-              <span className="text-xl text-green-600">
-                {details?.availability}
+              <span className="text-xl text-orange-600">
+                {details?.availability? details.availability : "Not Available"}
               </span>
             </div>
             <div className="flex items-center gap-2">
@@ -109,6 +109,7 @@ const RoomDetails = () => {
           </div>
           <button
             onClick={openModal}
+            disabled={!details?.availability || details.availability === 0}
             className="mt-5 btn bg-green-400 border-none px-8 py-3 rounded-full hover:bg-gray-600 hover:text-gray-200 hover:scale-105 transform transition duration-300"
           >
             Book Now
