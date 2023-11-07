@@ -3,11 +3,14 @@ import CartCard from "./CartCard";
 import { AuthContext } from "../../Provider/AuthProvider";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import RatingModal from "./RatingModal";
 
 const MyBookings = () => {
   const { user } = useContext(AuthContext);
   const [bookings, setBookings] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
   const axiosSecure = useAxiosSecure();
 
   const url = `/myBookings/${user?.email}`;
@@ -48,6 +51,21 @@ const MyBookings = () => {
     });
   };
 
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
+
+  const handleRating = e =>{
+    e.preventDefault();
+    const form = e.target;
+    const rating = form.rating.value;
+    const message = form.message.value;
+    console.log(rating,message);
+  }
+
   return (
     <>
       {loading ? (
@@ -77,6 +95,7 @@ const MyBookings = () => {
           </div>
         </div>
       )}
+      <RatingModal handleRating={handleRating}></RatingModal>
     </>
   );
 };

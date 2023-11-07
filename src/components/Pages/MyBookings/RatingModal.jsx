@@ -1,39 +1,47 @@
-const RatingModal = () => {
-    return (
-        <>
-                  <div className="min-w-screen h-screen animated fadeIn faster fixed left-0 top-0 flex justify-center items-center inset-0 z-50 outline-none focus:outline-none bg-no-repeat bg-center bg-cover">
+import PropTypes from "prop-types";
+
+const RatingModal = ({handleRating}) => {
+
+
+
+  return (
+    <>
+      <div className="min-w-screen h-screen animated fadeIn faster fixed left-0 top-0 flex justify-center items-center inset-0 z-50 outline-none focus:outline-none bg-no-repeat bg-center bg-cover">
         <div className="absolute bg-black opacity-80 inset-0 z-0"></div>
         <div className="w-full max-w-lg p-5 relative mx-auto my-auto rounded-xl shadow-lg bg-white">
           <div className="text-center">
-            <h2 className="text-xl font-bold mb-8">Price: $200</h2>
-            <p className="text-lg mb-2">
-              <span className="font-bold">Room Number:</span> 403
-            </p>
-            <p className="text-lg mb-2">
-              <span className="font-bold">Room:</span> Deluxe Luxury Room
-            </p>
-            <p className="text-lg">
-              <span className="font-bold">Email:</span> sadmanryanriad@gmail.com
-            </p>
-
-
-            <div className="p-3 mt-4 text-center space-x-4 md:block">
-              <button
-                className="mb-2 md:mb-0 bg-white px-5 py-2 text-sm shadow-sm font-medium tracking-wider border text-gray-600 rounded-full hover:shadow-lg hover:bg-gray-100"
-              >
+            <form onSubmit={handleRating}>
+              <select name="rating" className="select select-bordered w-full max-w-xs">
+                {/* <option disabled selected>
+                  select a rating
+                </option> */}
+                <option>5</option>
+                <option>4</option>
+                <option>3</option>
+                <option>2</option>
+                <option>1</option>
+              </select>
+              <textarea required name="message" className="textarea textarea-lg mt-5 textarea-warning w-full max-w-xs" placeholder="Write message"></textarea>
+              <div className="p-3 mt-4 text-center space-x-4 md:block">
+              <p className="btn btn-sm">
                 Cancel
-              </button>
-              <button
-                className="mb-2 md:mb-0 bg-green-500 border px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-gray-600"
-              >
-                Book
+              </p>
+              <button 
+              type="submit"
+              className="btn btn-success btn-sm ">
+                Rate
               </button>
             </div>
+            </form>
           </div>
         </div>
       </div>
-        </>
-    );
+    </>
+  );
 };
+
+RatingModal.propTypes = {
+    handleRating: PropTypes.func,
+  };
 
 export default RatingModal;

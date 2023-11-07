@@ -32,9 +32,9 @@ const CartCard = ({ card, handleDelete }) => {
   const handleRating = (roomIdToRate)=>{
     console.log(roomIdToRate);
 
-    const ratingInfo = {
+    // const ratingInfo = {
         
-    }
+    // }
   }
 
   return (
