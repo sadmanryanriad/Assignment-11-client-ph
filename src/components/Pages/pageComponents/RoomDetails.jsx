@@ -89,7 +89,7 @@ const RoomDetails = () => {
               <span className="text-xl">{details?.roomSize}</span>
             </div>
             <div className="flex items-center gap-2">
-              <strong className="text-lg">Availability:</strong>
+              <strong className="text-lg">Available Seat:</strong>
               <span className="text-xl text-orange-600">
                 {details?.availability ? details.availability : "Not Available"}
               </span>
