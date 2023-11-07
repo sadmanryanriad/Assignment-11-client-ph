@@ -21,6 +21,13 @@ const RoomDetails = () => {
 
   const url = `/rooms/${id}`;
 
+  //for refetching data when user books a room
+  const fetchRooms = () => {
+    axiosSecure.get(url).then((res) => {
+      setDetails(res?.data);
+    });
+  };
+
   useEffect(() => {
     axiosSecure.get(url).then((res) => {
       setDetails(res?.data);
@@ -51,6 +58,7 @@ const RoomDetails = () => {
 
     axiosSecure.post("/bookings", bookingDetails).then((res) => {
       console.log("axios: ", res.data);
+      fetchRooms();
       if (res.data.acknowledged)
         Swal.fire({
           title: "Congratulations",
@@ -83,7 +91,7 @@ const RoomDetails = () => {
             <div className="flex items-center gap-2">
               <strong className="text-lg">Availability:</strong>
               <span className="text-xl text-orange-600">
-                {details?.availability? details.availability : "Not Available"}
+                {details?.availability ? details.availability : "Not Available"}
               </span>
             </div>
             <div className="flex items-center gap-2">
