@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 
-const RatingModal = ({handleRating}) => {
+const RatingModal = ({ handleRating, closeModal }) => {
 
 
 
@@ -23,7 +23,7 @@ const RatingModal = ({handleRating}) => {
               </select>
               <textarea required name="message" className="textarea textarea-lg mt-5 textarea-warning w-full max-w-xs" placeholder="Write message"></textarea>
               <div className="p-3 mt-4 text-center space-x-4 md:block">
-              <p className="btn btn-sm">
+              <p onClick={closeModal} className="btn btn-sm">
                 Cancel
               </p>
               <button 
@@ -42,6 +42,7 @@ const RatingModal = ({handleRating}) => {
 
 RatingModal.propTypes = {
     handleRating: PropTypes.func,
+    closeModal: PropTypes.func,
   };
 
 export default RatingModal;

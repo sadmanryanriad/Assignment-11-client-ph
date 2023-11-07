@@ -2,6 +2,7 @@ import PropTypes from "prop-types";
 import { useState } from "react";
 import { useEffect } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import RatingModal from "./RatingModal";
 
 const CartCard = ({ card, handleDelete }) => {
   const { roomId, _id, date } = card;
@@ -19,6 +20,7 @@ const CartCard = ({ card, handleDelete }) => {
   const formattedDate = `${month.toString().padStart(2, '0')}/${day.toString().padStart(2, '0')}/${year}`;
     
   const [product, setProduct] = useState({});
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const axiosSecure = useAxiosSecure();
   const url = `/rooms/${roomId}`;
 
@@ -29,15 +31,23 @@ const CartCard = ({ card, handleDelete }) => {
     });
   }, [axiosSecure, url]);
 
-  const handleRating = (roomIdToRate)=>{
-    console.log(roomIdToRate);
+  const openModal = () => {
+    setIsModalOpen(true);
+  };
+  const closeModal = () => {
+    setIsModalOpen(false);
+  };
 
-    // const ratingInfo = {
-        
-    // }
-  }
+  const handleRating = (e) => {
+    e.preventDefault();
+    const form = e.target;
+    const rating = form.rating.value;
+    const message = form.message.value;
+    console.log(rating, message);
+  };
 
   return (
+    <>
     <div>
       <div className="border p-4 m-4 md:m-0 rounded-lg text-center">
         <img
@@ -68,7 +78,7 @@ const CartCard = ({ card, handleDelete }) => {
               Update
             </button>
             <button
-            onClick={()=> handleRating(roomId)}
+            onClick={openModal}
               className="btn btn-sm btn-warning hover:scale-105"
             >
               Give Rating
@@ -77,6 +87,9 @@ const CartCard = ({ card, handleDelete }) => {
         </div>
       </div>
     </div>
+    {isModalOpen && <RatingModal roomId={roomId} handleRating={handleRating} closeModal={closeModal}></RatingModal>}
+
+    </>
   );
 };
 
