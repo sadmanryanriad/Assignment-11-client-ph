@@ -8,6 +8,7 @@ import "react-datepicker/dist/react-datepicker.css";
 import BookingModal from "./BookingModal";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
+import UserTestimonials from "../testimonial/UserTestimonials";
 
 const RoomDetails = () => {
   const [details, setDetails] = useState({});
@@ -135,6 +136,7 @@ const RoomDetails = () => {
           >
             Book Now
           </button>
+          <UserTestimonials></UserTestimonials>
         </div>
       </div>
 

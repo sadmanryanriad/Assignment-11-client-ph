@@ -47,18 +47,22 @@ const CartCard = ({ card, handleDelete }) => {
             Price: ${product?.pricePerNight}
           </p>
           <p className="text-sm text-yellow-500">Rating: {product?.rating}</p>
-          <div className="mt-4">
+          <div className="mt-4 flex gap-2">
             <button
               onClick={() => handleDelete(_id)}
-              className="bg-red-500 text-white px-4 py-2 rounded-md mr-2"
+              className="btn btn-sm btn-error hover:scale-105"
             >
               Cancel
             </button>
             <button
-              onClick={() => handleDelete(_id)}
-              className="bg-blue-500 text-white px-4 py-2 rounded-md mr-2"
+              className="btn btn-sm btn-info hover:scale-105"
             >
               Update
+            </button>
+            <button
+              className="btn btn-sm btn-warning hover:scale-105"
+            >
+              Give Rating
             </button>
           </div>
         </div>
