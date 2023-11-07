@@ -3,10 +3,13 @@ import { useState } from "react";
 import { useEffect } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import RatingModal from "./RatingModal";
+import Swal from "sweetalert2";
 
-const CartCard = ({ card, handleDelete }) => {
+const CartCard = ({ card, handleDelete,user }) => {
   const { roomId, _id, date } = card;
-//   console.log(roomId, _id, date);
+
+  //user info
+  const {email, photoURL, displayName} = user;
 
   const dateStringFromDatabase = date;
   const dateObject = new Date(dateStringFromDatabase);
@@ -43,7 +46,20 @@ const CartCard = ({ card, handleDelete }) => {
     const form = e.target;
     const rating = form.rating.value;
     const message = form.message.value;
-    console.log(rating, message);
+    const ratingInfo = {roomId, email, photoURL, displayName, rating, message }
+
+    axiosSecure.post("ratings",ratingInfo)
+    .then(res=>{
+        if(res.data.acknowledged){
+            Swal.fire({
+                title: "Congratulations!",
+                text: "Your rating has been posted!",
+                icon: "success"
+              });
+        }
+        closeModal();
+
+    })
   };
 
   return (
@@ -96,6 +112,7 @@ const CartCard = ({ card, handleDelete }) => {
 CartCard.propTypes = {
   card: PropTypes.object,
   handleDelete: PropTypes.func,
+  user: PropTypes.object,
 };
 
 export default CartCard;

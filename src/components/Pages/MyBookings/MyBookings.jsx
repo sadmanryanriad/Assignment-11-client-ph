@@ -69,6 +69,7 @@ const MyBookings = () => {
                   key={card._id}
                   card={card}
                   handleDelete={handleDelete}
+                  user={user}
                 ></CartCard>
               ))
             ) : (
