@@ -29,6 +29,7 @@ const UserTestimonialsRoom = ({ roomId, ratingsCount }) => {
         <h2 className="text-3xl md:text-5xl font-bold mb-6 md:mb-12 text-center dark:text-slate-300">
           User Testimonials - ({ratingsCount})
         </h2>
+        {!ratingsCount && <h2 className="text-2xl font-bold text-red-400">Not rated yet</h2>}
 
         <div className="mt-8 grid grid-cols-1 p-2 md:grid-cols-3 gap-6">
           {displayRatings.map((testimonial) => (
