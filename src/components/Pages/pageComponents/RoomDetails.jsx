@@ -42,11 +42,11 @@ const RoomDetails = () => {
     axiosSecure.get(`/myBookings/${user.email}`).then((res) => {
       setBookings(res?.data);
     });
+    //find rating count
     axiosSecure.get(`/ratings/ratingsCount/${id}`)
     .then(res=>{
       setRatingsObj(res.data);
     })
-    //find rating count
   }, [axiosSecure, id, url, user.email]);
 
   //already booked by user? starts here
