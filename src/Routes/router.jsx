@@ -9,6 +9,7 @@ import PrivateRoute from "../components/PrivateRoute/PrivateRoute";
 import RoomDetails from "../components/Pages/pageComponents/RoomDetails";
 import MyBookings from "../components/Pages/MyBookings/MyBookings";
 import TestimonialPage from "../components/Pages/testimonial/TestimonialPage";
+import FAQ from "../components/Pages/FAQ";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +44,10 @@ const router = createBrowserRouter([
       {
         path: "testimonials",
         element: <TestimonialPage></TestimonialPage>
+      },
+      {
+        path: "faq",
+        element: <FAQ></FAQ>
       }
     ],
   },

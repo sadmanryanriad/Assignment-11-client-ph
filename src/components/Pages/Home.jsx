@@ -8,6 +8,7 @@ import UserTestimonials from "./testimonial/UserTestimonials";
 import useScrollToTop from "../../hooks/useScrollToTop";
 import { BsArrowUpCircle } from "react-icons/bs";
 import { Helmet } from "react-helmet-async";
+import ContactForm from "../ContactMe/ContactForm";
 
 const Home = () => {
   const { isScrollVisible, scrollToTop } = useScrollToTop(200);
@@ -25,6 +26,7 @@ const Home = () => {
         <UserTestimonials></UserTestimonials>
         <AddressSection></AddressSection>
         <NewsLetter></NewsLetter>
+        <ContactForm></ContactForm>
 
         {/* Render the scroll-to-top button when showScrollButton is true */}
         {isScrollVisible && (
