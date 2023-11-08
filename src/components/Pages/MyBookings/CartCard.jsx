@@ -86,7 +86,7 @@ const CartCard = ({ card, handleDelete,user }) => {
               onClick={() => handleDelete(_id)}
               className="btn btn-sm btn-error hover:scale-105"
             >
-              Cancel
+              Delete
             </button>
             <button
               className="btn btn-sm btn-info hover:scale-105"
