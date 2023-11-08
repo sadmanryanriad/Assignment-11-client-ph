@@ -4,16 +4,18 @@ import { useEffect } from "react";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import RatingModal from "./RatingModal";
 import Swal from "sweetalert2";
+import UpdateDateModal from "./UpdateDateModal";
 
-const CartCard = ({ card, handleDelete,user }) => {
+const CartCard = ({ card, handleDelete,user, reFetchData }) => {
   const { roomId, _id, date } = card;
-
+  
   //user info
   const {email, photoURL, displayName} = user;
 
   const dateStringFromDatabase = date;
+  //dateObject from database
   const dateObject = new Date(dateStringFromDatabase);
-  
+    
   // Get the day, month, and year from the date object
   const day = dateObject.getDate();
   const month = dateObject.getMonth() + 1; // Months are zero-based, so we add 1
@@ -21,11 +23,43 @@ const CartCard = ({ card, handleDelete,user }) => {
   
   // Create a formatted date string in the 'mm/dd/yyyy' format
   const formattedDate = `${month.toString().padStart(2, '0')}/${day.toString().padStart(2, '0')}/${year}`;
-    
+
+  //states for UpdateDateModal
+  const [updateModalOpen, setUpdateModalOpen] = useState(false);
+  //set the date that user room is booked
+  const [newSelectedDate, setNewSelectedDate] = useState(dateObject);
   const [product, setProduct] = useState({});
   const [isModalOpen, setIsModalOpen] = useState(false);
   const axiosSecure = useAxiosSecure();
   const url = `/rooms/${roomId}`;
+  const handleDateChange = (date) => {
+    setNewSelectedDate(date);
+  };
+  const openUpdateModal = () => {
+    setUpdateModalOpen(true);
+  };
+  const closeUpdateModal = () => {
+    setUpdateModalOpen(false);
+  };
+  const handleUpdateModal = () => {
+    const updatedBookingDetails = {
+      roomId: roomId,
+      userEmail: email,
+      date: newSelectedDate,
+    };
+    axiosSecure.post(`/myBookings/update/${_id}`,updatedBookingDetails)
+    .then(res=>{
+      if (res.data.acknowledged)
+        Swal.fire({
+          title: "Updated",
+          text: "Booking Date updated!",
+          icon: "success",
+        });
+        reFetchData();
+    });
+    closeUpdateModal();
+  };
+
 
   useEffect(() => {
     axiosSecure.get(url).then((res) => {
@@ -89,6 +123,7 @@ const CartCard = ({ card, handleDelete,user }) => {
               Delete
             </button>
             <button
+            onClick={openUpdateModal}
               className="btn btn-sm btn-info hover:scale-105"
             >
               Update Date
@@ -104,7 +139,12 @@ const CartCard = ({ card, handleDelete,user }) => {
       </div>
     </div>
     {isModalOpen && <RatingModal roomId={roomId} handleRating={handleRating} closeModal={closeModal}></RatingModal>}
-
+    {updateModalOpen && <UpdateDateModal handleUpdateModal={handleUpdateModal}
+          closeModal={closeUpdateModal}
+          handleDateChange={handleDateChange}
+          selectedDate={newSelectedDate}
+          bookedDate={dateObject}
+          ></UpdateDateModal>}
     </>
   );
 };
@@ -112,6 +152,7 @@ const CartCard = ({ card, handleDelete,user }) => {
 CartCard.propTypes = {
   card: PropTypes.object,
   handleDelete: PropTypes.func,
+  reFetchData: PropTypes.func,
   user: PropTypes.object,
 };
 

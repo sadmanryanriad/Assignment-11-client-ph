@@ -70,6 +70,7 @@ const MyBookings = () => {
                   card={card}
                   handleDelete={handleDelete}
                   user={user}
+                  reFetchData={reFetchData}
                 ></CartCard>
               ))
             ) : (
