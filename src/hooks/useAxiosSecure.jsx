@@ -1,9 +1,9 @@
 import axios from "axios";
 
 const axiosSecure = axios.create({
-    baseURL: 'http://localhost:5000',
+    baseURL: 'https://assignment-11-server-fawn-five.vercel.app',
     withCredentials:true
-})
+});
 
 const useAxiosSecure = () => {
     return axiosSecure;

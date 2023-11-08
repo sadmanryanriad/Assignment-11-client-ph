@@ -38,7 +38,7 @@ const UpdateDateModal = ({ handleUpdateModal, closeModal, handleDateChange, sele
                 onClick={handleUpdateModal}
                 className="mb-2 md:mb-0 bg-green-500 border px-5 py-2 text-sm shadow-sm font-medium tracking-wider text-white rounded-full hover:shadow-lg hover:bg-gray-600"
               >
-                Book
+                Update
               </button>
             </div>
           </div>
