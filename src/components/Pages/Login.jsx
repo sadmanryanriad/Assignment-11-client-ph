@@ -4,11 +4,12 @@ import { AuthContext } from "../Provider/AuthProvider";
 import SocialLogin from "./SocialLogin";
 import toast from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
-import axios from "axios";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 const Login = () => {
   const navigate = useNavigate("/");
   const { login } = useContext(AuthContext);
+  const axiosSecure = useAxiosSecure();
 
   const handleLogin = (e) => {
     e.preventDefault();
@@ -29,13 +30,13 @@ const Login = () => {
         const user = {email};
         
                  // get access token
-                 axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+                 axiosSecure.post('/jwt', user, { withCredentials: true })
                  .then(res => {
                      console.log(res.data)
                      
                  })
         navigate("/");
-        window.location.reload();
+        // window.location.reload();
 
       })
       .catch((error) => {
