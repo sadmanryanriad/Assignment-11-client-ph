@@ -27,28 +27,46 @@ const MyBookings = () => {
     });
   }, [axiosSecure, url]);
 
-  const handleDelete = (userProductId) => {
-    Swal.fire({
-      title: "Are you sure?",
-      text: "You won't be able to revert this!",
-      icon: "warning",
-      showCancelButton: true,
-      confirmButtonColor: "#3085d6",
-      cancelButtonColor: "#d33",
-      confirmButtonText: "Yes, delete it!",
-    }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire({
-          title: "Cancelled!",
-          text: "Booking has been cancelled!",
-          icon: "success",
-        });
-        axiosSecure.delete(`/myBookings/${userProductId}`).then(() => {
-          reFetchData();
-        });
-      }
-    });
+  const handleDelete = (userProductId, bookedDate) => {
+    // Calculate the date 1 day from the booked date
+    const oneDayFromBookedDate = new Date(bookedDate);
+    oneDayFromBookedDate.setDate(oneDayFromBookedDate.getDate() - 1);
+  
+    // Calculate the current date
+    const currentDate = new Date();
+  
+    // Compare the current date with the calculated date
+    if (currentDate < oneDayFromBookedDate) {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            title: "Cancelled!",
+            text: "Booking has been cancelled!",
+            icon: "success",
+          });
+          axiosSecure.delete(`/myBookings/${userProductId}`).then(() => {
+            reFetchData();
+          });
+        }
+      });
+    } else {
+      Swal.fire({
+        title: "Cancellation Error",
+        text: "You can only cancel a booking before 1 day from the booked date.",
+        icon: "error",
+      });
+    }
   };
+  
+  
 
 
 

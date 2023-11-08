@@ -117,7 +117,7 @@ const CartCard = ({ card, handleDelete,user, reFetchData }) => {
           <p className="text-sm text-yellow-500">Rating: {product?.rating}</p>
           <div className="mt-4 flex gap-2">
             <button
-              onClick={() => handleDelete(_id)}
+              onClick={() => handleDelete(_id,date)}
               className="btn btn-sm btn-error hover:scale-105"
             >
               Delete
