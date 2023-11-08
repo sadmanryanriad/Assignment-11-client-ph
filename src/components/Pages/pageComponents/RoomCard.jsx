@@ -23,10 +23,14 @@ const RoomCard = ({ room }) => {
           <p>{roomDescription}</p>
           <p className="text-yellow-500 font-semibold">Rating: {ratingsObj?.averageRating || "N/A"} ({ratingsObj?.ratingsCount})</p>
           <p className="font-semibold">Price: ${pricePerNight}</p>
-          <div className="card-actions justify-end">
+          <div className="card-actions flex ">
+            <Link to={`/rooms/${_id}`}>
+            <button className="btn btn-sm bg-gray-400 hover:bg-slate-800 hover:text-gray-200">
+              See Details
+            </button></Link>
             <Link to={`/rooms/${_id}`}>
             <button className="btn btn-sm bg-green-400 hover:bg-slate-800 hover:text-gray-200">
-              See Details
+              Book Now
             </button></Link>
           </div>
         </div>
