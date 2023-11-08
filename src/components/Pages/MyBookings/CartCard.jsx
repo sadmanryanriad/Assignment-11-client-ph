@@ -64,7 +64,6 @@ const CartCard = ({ card, handleDelete,user, reFetchData }) => {
   useEffect(() => {
     axiosSecure.get(url).then((res) => {
       setProduct(res?.data);
-    //   console.log(res.data);
     });
   }, [axiosSecure, url]);
 
@@ -80,7 +79,8 @@ const CartCard = ({ card, handleDelete,user, reFetchData }) => {
     const form = e.target;
     const rating = form.rating.value;
     const message = form.message.value;
-    const ratingInfo = {roomId, email, photoURL, displayName, rating, message }
+    const timeStamp = new Date();
+    const ratingInfo = {roomId, email, photoURL, displayName, rating, message, timeStamp }
 
     axiosSecure.post("ratings",ratingInfo)
     .then(res=>{
