@@ -39,6 +39,7 @@ const UserTestimonialsRoom = ({ roomId, ratingsCount }) => {
               name={testimonial?.displayName}
               rating={parseInt(testimonial?.rating)}
               content={testimonial?.message}
+              timeStamp={testimonial?.timeStamp}
             />
           ))}
         </div>

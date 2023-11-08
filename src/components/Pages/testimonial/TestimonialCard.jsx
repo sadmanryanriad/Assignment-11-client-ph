@@ -1,7 +1,23 @@
 import PropTypes from 'prop-types';
 
+
+const formatTimestamp = (timestamp) => {
+  const date = new Date(timestamp);
+  const options = {
+    year: 'numeric',
+    month: 'short',
+    day: 'numeric',
+    hour: '2-digit',
+    minute: '2-digit',
+  };
+  return date.toLocaleString('en-US', options);
+};
+
 // eslint-disable-next-line react/prop-types
-const TestimonialCard = ({ image, name, rating, content }) => {
+const TestimonialCard = ({ image, name, rating, content,timeStamp }) => {
+  
+  const formattedTime = formatTimestamp(timeStamp);
+
     return (
       <div className="mb-4 sm:break-inside-avoid dark:text-gray-300">
         <blockquote className="rounded-lg border p-6 shadow-sm sm:p-8">
@@ -32,6 +48,9 @@ const TestimonialCard = ({ image, name, rating, content }) => {
               <p className="mt-0.5 text-lg font-medium">
                 {name}
               </p>
+              <p className="text-sm ">
+                {formattedTime}
+              </p>
             </div>
           </div>
   
@@ -49,6 +68,7 @@ const TestimonialCard = ({ image, name, rating, content }) => {
     name: PropTypes.string,
     rating: PropTypes.number,
     content: PropTypes.string,
+    timeStamp: PropTypes.string,
   };
 
   export default TestimonialCard;
