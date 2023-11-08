@@ -36,6 +36,16 @@ const menu = (
         My Bookings
       </NavLink>
     </li>
+    <li>
+      <NavLink
+        to="/testimonials"
+        className={({ isActive, isPending }) =>
+          isPending ? "pending" : isActive ? "active" : ""
+        }
+      >
+        Testimonials
+      </NavLink>
+    </li>
   </>
 );
 
