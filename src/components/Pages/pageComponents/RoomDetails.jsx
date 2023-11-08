@@ -15,6 +15,7 @@ const RoomDetails = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [bookings, setBookings] = useState([]);
+  const [ratingsObj, setRatingsObj] = useState(0);
   const axiosSecure = useAxiosSecure();
   const { user } = useContext(AuthContext);
   const [selectedDate, setSelectedDate] = useState(new Date());
@@ -41,7 +42,12 @@ const RoomDetails = () => {
     axiosSecure.get(`/myBookings/${user.email}`).then((res) => {
       setBookings(res?.data);
     });
-  }, [axiosSecure, url, user.email]);
+    axiosSecure.get(`/ratings/ratingsCount/${id}`)
+    .then(res=>{
+      setRatingsObj(res.data);
+    })
+    //find rating count
+  }, [axiosSecure, id, url, user.email]);
 
   //already booked by user? starts here
   const isBooked = bookings.find((element) => element.roomId === id);
@@ -114,7 +120,7 @@ const RoomDetails = () => {
             </div>
             <div className="flex items-center gap-2">
               <strong className="text-lg">Rating:</strong>
-              <span className="text-xl">{details?.rating}</span>
+              <span className="text-xl text-yellow-500">{ratingsObj.averageRating} ({ratingsObj.ratingsCount})</span>
             </div>
           </div>
           <div className="mt-8">
@@ -136,7 +142,7 @@ const RoomDetails = () => {
           >
             Book Now
           </button>
-          <UserTestimonialsRoom roomId={id}></UserTestimonialsRoom>
+          <UserTestimonialsRoom ratingsCount={ratingsObj.ratingsCount} roomId={id}></UserTestimonialsRoom>
         </div>
       </div>
 

@@ -4,7 +4,7 @@ import TestimonialCard from "../testimonial/TestimonialCard";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useEffect } from "react";
 
-const UserTestimonialsRoom = ({ roomId }) => {
+const UserTestimonialsRoom = ({ roomId, ratingsCount }) => {
   const [expanded, setExpanded] = useState(false);
 
   const [ratings, setRatings] = useState([]);
@@ -27,7 +27,7 @@ const UserTestimonialsRoom = ({ roomId }) => {
     <section className="">
       <div className="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
         <h2 className="text-3xl md:text-5xl font-bold mb-6 md:mb-12 text-center dark:text-slate-300">
-          User Testimonials
+          User Testimonials - ({ratingsCount})
         </h2>
 
         <div className="mt-8 grid grid-cols-1 p-2 md:grid-cols-3 gap-6">
@@ -59,6 +59,7 @@ const UserTestimonialsRoom = ({ roomId }) => {
 
 UserTestimonialsRoom.propTypes = {
   roomId: PropTypes.string,
+  ratingsCount: PropTypes.number,
 };
 
 export default UserTestimonialsRoom;
