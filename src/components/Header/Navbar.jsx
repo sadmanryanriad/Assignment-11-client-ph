@@ -3,6 +3,7 @@ import { FiLogIn } from "react-icons/fi";
 import { useContext } from "react";
 import { AuthContext } from "../Provider/AuthProvider";
 import ThemeButton from "../Pages/pageComponents/ThemeButton";
+import toast from "react-hot-toast";
 
 const menu = (
   <>
@@ -49,9 +50,15 @@ const menu = (
   </>
 );
 
+
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
-
+  
+  const handleLogOut =()=>{
+    logout();
+    toast.success("Log out successful");
+  
+  }
   return (
     <div className="navbar">
       <div className="navbar-start">
@@ -114,7 +121,7 @@ const Navbar = () => {
               <li>
                 <button
                   className="btn-warning bg-green-400 hover:text-white text-lg"
-                  onClick={logout}
+                  onClick={handleLogOut}
                 >
                   Logout
                 </button>

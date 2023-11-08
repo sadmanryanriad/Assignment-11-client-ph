@@ -10,7 +10,6 @@ import {
 } from "firebase/auth";
 import PropTypes from "prop-types";
 import { auth } from "../../firebase/firebase.config";
-import toast from "react-hot-toast";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 export const AuthContext = createContext(null);
@@ -56,7 +55,6 @@ const AuthProvider = ({ children }) => {
     .then(res=>{
       console.log(res.data);
     })
-    toast.success("Log out successful");
     return signOut(auth);
   };
 

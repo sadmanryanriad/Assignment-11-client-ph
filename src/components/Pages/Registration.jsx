@@ -6,7 +6,7 @@ import toast from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
 
 const Registration = () => {
-  const { createUser, handleUpdateProfile } = useContext(AuthContext);
+  const { createUser, handleUpdateProfile, logout } = useContext(AuthContext);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
@@ -26,9 +26,9 @@ const Registration = () => {
     createUser(email, password)
       .then(async () => {
         await handleUpdateProfile(name, image);
-        toast.success("user created successfully!");
-        navigate("/");
-        window.location.reload();
+        logout();
+        toast.success("user created successfully! Please Login now");
+        navigate("/login");
       })
       .catch((error) => {
         toast.error(error);
