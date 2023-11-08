@@ -3,6 +3,7 @@ import TestimonialCard from "../testimonial/TestimonialCard";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useEffect } from "react";
 import Spinner from "../../Spinner/Spinner";
+import { Helmet } from "react-helmet-async";
 
 const TestimonialPage = () => {
   const [expanded, setExpanded] = useState(false);
@@ -27,6 +28,10 @@ const TestimonialPage = () => {
   if(isLoading) return <Spinner></Spinner>
 
   return (
+    <>
+    <Helmet>
+  <title>Testimonials-Alpha Hotel</title>
+</Helmet>
     <section className="">
       <div className="mx-auto max-w-screen-xl px-4 py-12 sm:px-6 lg:px-8 lg:py-16">
         <h2 className="text-3xl md:text-5xl font-bold mb-6 md:mb-12 text-center dark:text-slate-300">
@@ -58,6 +63,7 @@ const TestimonialPage = () => {
         </div>
       </div>
     </section>
+    </>
   );
 };
 

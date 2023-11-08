@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import RoomCard from "./pageComponents/RoomCard";
 import useAxiosSecure from "../../hooks/useAxiosSecure";
 import Spinner from "../Spinner/Spinner";
+import { Helmet } from "react-helmet-async";
 
 const Rooms = () => {
   const axiosSecure = useAxiosSecure();
@@ -45,6 +46,10 @@ const Rooms = () => {
 
   if (isLoading) return <Spinner></Spinner>;
   return (
+    <>
+    <Helmet>
+  <title>Rooms-Alpha Hotel</title>
+</Helmet>
     <div className="max-w-7xl mx-auto">
       <form className="mb-8">
         <h2 className="text-xl font-semibold mb-2">Sort by:</h2>
@@ -63,6 +68,7 @@ const Rooms = () => {
         ))}
       </div>
     </div>
+    </>
   );
 };
 

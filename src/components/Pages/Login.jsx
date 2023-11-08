@@ -3,6 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Provider/AuthProvider";
 import SocialLogin from "./SocialLogin";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
   const navigate = useNavigate("/");
@@ -33,6 +34,11 @@ const Login = () => {
   };
 
   return (
+
+    <>
+    <Helmet>
+  <title>Login-Alpha Hotel</title>
+</Helmet>
     <div className="min-h-screen flex flex-col items-center justify-top md:pt-10">
       <div className="flex flex-col dark:bg-slate-500 dark:text-gray-800 shadow-md px-4 sm:px-6 md:px-8 lg:px-10 py-8 rounded-md w-full max-w-md">
         <div className="font-medium self-center text-xl sm:text-2xl uppercase text-gray-800">
@@ -172,6 +178,7 @@ const Login = () => {
         </div>
       </div>
     </div>
+    </>
   );
 };
 

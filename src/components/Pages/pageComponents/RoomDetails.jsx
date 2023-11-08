@@ -9,6 +9,7 @@ import BookingModal from "./BookingModal";
 import toast from "react-hot-toast";
 import Swal from "sweetalert2";
 import UserTestimonialsRoom from "../testimonial/UserTestimonialsRoom";
+import { Helmet } from "react-helmet-async";
 
 const RoomDetails = () => {
   const [details, setDetails] = useState({});
@@ -88,6 +89,9 @@ const RoomDetails = () => {
 
   return (
     <>
+    <Helmet>
+  <title>Room Details-Alpha Hotel</title>
+</Helmet>
       <div className="">
         <div className="max-w-7xl mx-auto px-4 py-8">
           <h1 className="text-3xl font-semibold">Room No {details?.roomNo}</h1>

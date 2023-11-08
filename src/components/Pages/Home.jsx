@@ -7,11 +7,16 @@ import FeaturedRooms from "../featured/FeaturedRooms";
 import UserTestimonials from "./testimonial/UserTestimonials";
 import useScrollToTop from "../../hooks/useScrollToTop";
 import { BsArrowUpCircle } from "react-icons/bs";
+import { Helmet } from "react-helmet-async";
 
 const Home = () => {
   const { isScrollVisible, scrollToTop } = useScrollToTop(200);
   return (
-    <div className="overflow-hidden">
+<>
+<Helmet>
+  <title>Home-Alpha Hotel</title>
+</Helmet>
+<div className="overflow-hidden">
       <Banner></Banner>
       <div className="w-full md:w-[90%] mx-auto">
         <Services></Services>
@@ -33,6 +38,7 @@ const Home = () => {
         )}
       </div>
     </div>
+</>
   );
 };
 

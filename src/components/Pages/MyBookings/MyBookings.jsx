@@ -3,6 +3,7 @@ import CartCard from "./CartCard";
 import { AuthContext } from "../../Provider/AuthProvider";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet-async";
 
 const MyBookings = () => {
   const { user } = useContext(AuthContext);
@@ -53,6 +54,9 @@ const MyBookings = () => {
 
   return (
     <>
+    <Helmet>
+  <title>My Bookings-Alpha Hotel</title>
+</Helmet>
       {loading ? (
         <div className="w-screen h-screen flex justify-center items-center">
           <span className="loading loading-spinner loading-lg text-success text-5xl "></span>
