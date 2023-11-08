@@ -91,13 +91,13 @@ const CartCard = ({ card, handleDelete,user }) => {
             <button
               className="btn btn-sm btn-info hover:scale-105"
             >
-              Update
+              Update Date
             </button>
             <button
             onClick={openModal}
               className="btn btn-sm btn-warning hover:scale-105"
             >
-              Give Rating
+              Rate
             </button>
           </div>
         </div>
