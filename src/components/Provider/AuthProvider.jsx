@@ -11,6 +11,7 @@ import {
 import PropTypes from "prop-types";
 import { auth } from "../../firebase/firebase.config";
 import toast from "react-hot-toast";
+import useAxiosSecure from "../../hooks/useAxiosSecure";
 
 export const AuthContext = createContext(null);
 
@@ -19,6 +20,7 @@ const googleProvider = new GoogleAuthProvider();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState({});
   const [loading, setLoading] = useState(true);
+  const axiosSecure = useAxiosSecure();
 
   const googleLogin = () => {
     setLoading(true);
@@ -49,6 +51,11 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
   const logout = () => {
+    //logout and clear cookie using backend
+    axiosSecure.post('/logout')
+    .then(res=>{
+      console.log(res.data);
+    })
     toast.success("Log out successful");
     return signOut(auth);
   };

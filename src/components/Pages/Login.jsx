@@ -4,6 +4,7 @@ import { AuthContext } from "../Provider/AuthProvider";
 import SocialLogin from "./SocialLogin";
 import toast from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
+import axios from "axios";
 
 const Login = () => {
   const navigate = useNavigate("/");
@@ -25,8 +26,17 @@ const Login = () => {
     login(email, password)
       .then(() => {
         toast.success("log in successful");
+        const user = {email};
+        
+                 // get access token
+                 axios.post('http://localhost:5000/jwt', user, { withCredentials: true })
+                 .then(res => {
+                     console.log(res.data)
+                     
+                 })
         navigate("/");
         window.location.reload();
+
       })
       .catch((error) => {
         toast.error(error.message);
