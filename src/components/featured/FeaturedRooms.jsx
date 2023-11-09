@@ -10,7 +10,7 @@ const FeaturedRooms = () => {
             <p className="mb-4">Indulge in luxury and comfort with our meticulously curated featured rooms. Whether you seek a tranquil ocean view or a vibrant cityscape, our rooms are designed to elevate your stay. As strategists, designers, and developers, we ensure a seamless experience tailored to your preferences.</p>
             <p>Experience innovation and problem-solving woven into every detail. Our commitment is to simplicity and speed, delivering the scope you desire at the pace you need.</p>
             <Link to={'/rooms'}>
-            <button className="mt-3 btn bg-green-400 border-none px-8 py-3 rounded-full hover:bg-gray-600 hover:text-gray-200 hover:scale-105 transform transition duration-300">Explore now</button>
+            <button className="mt-3 btn bg-green-400 border-none px-8 py-3 rounded-full hover:bg-gray-600 hover:text-gray-200 hover:scale-105 transform transition duration-300">Book now</button>
             </Link>
         </div>
         <div className="grid grid-cols-2 gap-4 mt-8">
