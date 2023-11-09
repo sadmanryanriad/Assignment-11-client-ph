@@ -1,7 +1,7 @@
 const Carousel = () => {
   return (
     <div className=" md:max-w-5xl mx-auto">
-      <h2 className="text-3xl md:text-5xl font-semibold mb-2 text-center dark:text-slate-300">
+      <h2 className="text-3xl md:text-5xl font-semibold mb-5 mt-5 text-center dark:text-slate-300">
         Gallery images
       </h2>
       <p className="text-xl text-center mb-6 md:mb-10 dark:text-slate-300">We are constantly trying to grow. see some images of the hotel</p>

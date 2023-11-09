@@ -8,7 +8,7 @@ const handleSubmit = (e) =>{
 const ContactForm = () => {
     return (
       <div id="contact-me" className="max-w-7xl mx-auto text-center pt-16 md:pt-24">
-        <h2 className="text-3xl md:text-5xl">Contact US</h2>
+        <h2 className="text-3xl md:text-5xl font-semibold">Contact US</h2>
         <div className="flex items-center justify-center p-12">
           <div className="mx-auto w-full max-w-[550px]">
             <form onSubmit={handleSubmit}>
