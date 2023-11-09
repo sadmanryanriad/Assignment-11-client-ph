@@ -2,12 +2,14 @@ import { useState } from "react";
 import TestimonialCard from "../testimonial/TestimonialCard";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useEffect } from "react";
+import { useAos } from "../../../hooks/useAos";
 
 const UserTestimonials = () => {
   const [expanded, setExpanded] = useState(false);
 
   const [ratings, setRatings] = useState([]);
   const axiosSecure = useAxiosSecure();
+  useAos();
 
   const url = `/ratings`;
   useEffect(() => {
@@ -29,7 +31,7 @@ const UserTestimonials = () => {
           User Testimonials
         </h2>
 
-        <div className="mt-8 grid grid-cols-1 p-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div data-aos="fade-up" data-aos-once className="mt-8 grid grid-cols-1 p-2 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {displayRatings.map((testimonial) => (
             <TestimonialCard
               key={testimonial?._id}

@@ -15,7 +15,7 @@ const ContactForm = () => {
               <div className="mb-5">
                 <label
                   name="name"
-                  className="mb-3 block text-base font-medium text-[#07074D]"
+                  className="mb-3 block text-base font-medium "
                 >
                   Full Name
                 </label>
@@ -24,13 +24,13 @@ const ContactForm = () => {
                   name="name"
                   id="name"
                   placeholder="Full Name"
-                  className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                  className="w-full rounded-md border dark:border-none bg-white dark:bg-gray-600 py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-green-400 focus:shadow-md"
                 />
               </div>
               <div className="mb-5">
                 <label
                   name="email"
-                  className="mb-3 block text-base font-medium text-[#07074D]"
+                  className="mb-3 block text-base font-medium "
                 >
                   Email Address
                 </label>
@@ -39,13 +39,13 @@ const ContactForm = () => {
                   name="email"
                   id="email"
                   placeholder="example@domain.com"
-                  className="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                  className="w-full rounded-md border dark:border-none bg-white dark:bg-gray-600 py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-green-400 focus:shadow-md"
                 />
               </div>
               <div className="mb-5">
                 <label
                   name="message"
-                  className="mb-3 block text-base font-medium text-[#07074D]"
+                  className="mb-3 block text-base font-medium "
                 >
                   Message
                 </label>
@@ -54,7 +54,7 @@ const ContactForm = () => {
                   name="message"
                   id="message"
                   placeholder="Type your message"
-                  className="w-full resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+                  className="w-full resize-none rounded-md border dark:border-none bg-white dark:bg-gray-600 py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-green-400 focus:shadow-md"
                 ></textarea>
               </div>
               <div>

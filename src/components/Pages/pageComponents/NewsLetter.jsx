@@ -15,7 +15,7 @@ const NewsLetter = () => {
     <>
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center  mt-10 md:mt-20">
         {/* newsletter side */}
-        <div className="flex-1 dark:text-gray-300 ">
+        <div data-aos="fade-up" data-aos-once className="flex-1 dark:text-gray-300 ">
           <div className="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 lg:px-6">
             <div className="mx-auto max-w-screen-md sm:text-center">
               <h2 className="mb-4 text-3xl tracking-tight font-extrabold dark:text-gray-300 sm:text-4xl">
@@ -27,13 +27,13 @@ const NewsLetter = () => {
               </p>
               <form onSubmit={handleNewsLetter} className="join">
                 <input
-                  className="input input-bordered join-item p-2"
+                  className="input input-bordered dark:bg-gray-600 join-item p-2"
                   placeholder="Email"
                   type="email"
                   name="email"
                   required
                 />
-                <button type="submit" className="btn join-item rounded-r-lg bg-green-400 dark: border-none">
+                <button type="submit" className="btn join-item rounded-r-lg bg-green-400 border-none hover:bg-gray-600 hover:text-gray-200">
                   Subscribe
                 </button>
               </form>
