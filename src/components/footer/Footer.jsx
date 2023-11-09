@@ -45,8 +45,15 @@ const Footer = () => {
         </div>
       </nav>
       <aside>
-      <p>
-          © 2023 - All rights reserved by Alpha Hotel. Designed by Your Web Design Studio.
+        <p>
+          © 2023 - All rights reserved by Alpha Hotel. Designed by{" "}
+          <a
+            href="https://www.linkedin.com/in/sadmanryanriad/"
+            target="blank"
+            className="text-green-500 hover:text-green-700"
+          >
+            Sadman Ryan Riad
+          </a>
         </p>
       </aside>
     </footer>
