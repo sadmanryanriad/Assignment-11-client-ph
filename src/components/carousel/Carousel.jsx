@@ -1,6 +1,9 @@
+import { useAos } from "../../hooks/useAos";
+
 const Carousel = () => {
+  useAos();
   return (
-    <div className=" md:max-w-5xl mx-auto">
+    <div  data-aos="fade-up" data-aos-once className=" md:max-w-5xl mx-auto">
       <h2 className="text-3xl md:text-5xl font-semibold mb-5 mt-5 text-center dark:text-slate-300">
         Gallery images
       </h2>

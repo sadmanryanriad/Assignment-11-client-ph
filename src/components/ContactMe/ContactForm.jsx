@@ -1,4 +1,5 @@
 import toast from "react-hot-toast";
+import { useAos } from "../../hooks/useAos";
 
 const handleSubmit = (e) =>{
     e.preventDefault();
@@ -6,10 +7,11 @@ const handleSubmit = (e) =>{
 }
 
 const ContactForm = () => {
+  useAos();
     return (
       <div id="contact-me" className="max-w-7xl mx-auto text-center pt-16 md:pt-24">
         <h2 className="text-3xl md:text-5xl font-semibold">Contact US</h2>
-        <div className="flex items-center justify-center p-12">
+        <div  data-aos="fade-right" data-aos-once className="flex items-center justify-center p-12">
           <div className="mx-auto w-full max-w-[550px]">
             <form onSubmit={handleSubmit}>
               <div className="mb-5">
