@@ -54,7 +54,7 @@ const Rooms = () => {
       <form className="mb-8">
         <h2 className="text-xl font-semibold mb-2">Sort by:</h2>
         <select
-          className="select select-bordered w-full max-w-xs"
+          className="select select-bordered w-full max-w-xs dark:bg-gray-700"
           onChange={handleSortedRooms}
           value={sortOrder}
         >
@@ -62,7 +62,7 @@ const Rooms = () => {
           <option value="desc">High to Low</option>
         </select>
       </form>
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {sortedRooms.map((room) => (
           <RoomCard key={room._id} room={room} />
         ))}
