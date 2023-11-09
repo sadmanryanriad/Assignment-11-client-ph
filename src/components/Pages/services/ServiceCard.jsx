@@ -1,8 +1,12 @@
 import PropTypes from "prop-types";
+import { useAos } from "../../../hooks/useAos";
 
 const ServiceCard = ({ id, title, image }) => {
+  useAos();
+
   return (
     <div
+    data-aos="fade-up" data-aos-once
       key={id}
       className="group p-4 bg-white dark:bg-gray-800 shadow-lg rounded-lg text-center 
     transition transform hover:-translate-y-1 hover:shadow-xl"

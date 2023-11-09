@@ -1,5 +1,6 @@
 import Marquee from "react-fast-marquee";
 import PromotionSectionImg from "./PromotionSectionImg";
+import { useAos } from "../../../hooks/useAos";
 
 const images = [
   {
@@ -32,12 +33,14 @@ const imagesReverse = [
 ];
 
 const PromotionSection = () => {
+  useAos();
+  
   return (
     <section className="mt-20 md:mt-20 dark:text-gray-300">
       {/* text left and image right */}
       <div className="flex flex-col md:flex-row w-full max-w-7xl mx-auto items-center">
-        <div className="flex-1 px-3">
-          <h2 className="text-4xl mb-8 font-extrabold text-orange-400">
+        <div data-aos="fade-right" data-aos-once className="flex-1 px-3">
+          <h2  className="text-4xl mb-8 font-extrabold text-orange-400">
             Special Offers
           </h2>
           <div className="mb-4">
@@ -69,7 +72,7 @@ const PromotionSection = () => {
       </div>
       {/* text right and image left */}
       <div className="mt-12 flex flex-col md:flex-row-reverse w-full max-w-7xl mx-auto items-center">
-        <div className="flex-1 px-3 text-right">
+        <div  data-aos="fade-up" data-aos-once className="flex-1 px-3 text-right">
           <h2 className="text-4xl mb-8 font-extrabold text-orange-400">
             Super luxury
           </h2>

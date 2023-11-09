@@ -1,11 +1,16 @@
 import toast from "react-hot-toast";
 import Bird from "./Bird";
+import { useAos } from "../../../hooks/useAos";
 
 const NewsLetter = () => {
   const handleNewsLetter = e =>{
     e.preventDefault();
     toast.success("You will get notified!");
   }
+
+  useAos();
+
+
   return (
     <>
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center  mt-10 md:mt-20">
@@ -36,7 +41,7 @@ const NewsLetter = () => {
           </div>
         </div>
         {/* animation side */}
-        <div className="flex-1">
+        <div data-aos="fade-right" className="flex-1">
           <Bird></Bird>
         </div>
       </div>
