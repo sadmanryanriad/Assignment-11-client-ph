@@ -104,7 +104,7 @@ const RoomDetails = () => {
           <div className="mt-8 flex flex-wrap items-center gap-4">
             <div className="flex items-center gap-2">
               <strong className="text-lg">Price per night:</strong>
-              <span className="text-xl">{details?.pricePerNight}</span>
+              <span className="text-xl">${details?.pricePerNight}</span>
             </div>
             <div className="flex items-center gap-2">
               <strong className="text-lg">Room Size:</strong>
