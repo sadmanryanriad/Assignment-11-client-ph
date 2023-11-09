@@ -1,6 +1,6 @@
 const Carousel = () => {
   return (
-    <div className=" md:max-w-5xl lg:max-w-6xl mx-auto">
+    <div className=" md:max-w-5xl mx-auto">
       <h2 className="text-3xl md:text-5xl font-semibold mb-2 text-center dark:text-slate-300">
         Gallery images
       </h2>
